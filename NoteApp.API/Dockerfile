@@ -7,7 +7,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["NoteApp.API/NoteApp.API.csproj", "NoteApp.API/"]
+COPY ["../NoteApp.API/NoteApp.API.csproj", "NoteApp.API/"]
+COPY ["../NoteApp.Application/NoteApp.Application.csproj", "NoteApp.Application/"]
+COPY ["../NoteApp.Infrastructure/NoteApp.Infrastructure.csproj", "NoteApp.Infrastructure/"]
+COPY ["../NoteApp.Domain/NoteApp.Domain.csproj", "NoteApp.Domain/"]
 RUN dotnet restore "NoteApp.API/NoteApp.API.csproj"
 COPY . .
 WORKDIR "/src/NoteApp.API"

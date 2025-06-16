@@ -24,6 +24,8 @@
       <PackageReference Include="AWSSDK.S3" Version="4.0.1.6" />
       <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
       <PackageReference Include="Mapster" Version="7.4.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     </ItemGroup>
 
 </Project>

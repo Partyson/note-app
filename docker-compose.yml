@@ -16,8 +16,8 @@ services:
 
   api:
     build:
-      context: ./NoteApp.API
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: NoteApp.API/Dockerfile
     container_name: note_service_api
     depends_on:
       - postgres
