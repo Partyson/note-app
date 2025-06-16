@@ -14,13 +14,27 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  migrator:
+    build:
+      context: .
+      dockerfile: Dockerfile.Migrations 
+    container_name: note_service_migrator
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=${DB_HOST};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD};Port=${DB_PORT}"
+      ASPNETCORE_ENVIRONMENT: Development 
+
+
   api:
     build:
       context: .
       dockerfile: NoteApp.API/Dockerfile
     container_name: note_service_api
     depends_on:
-      - postgres
+      migrator:
+        condition: service_completed_successfully 
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DefaultConnection: "Host=${DB_HOST};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD};Port=${DB_PORT}"
