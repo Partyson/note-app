@@ -7,3 +7,4 @@ NoteApp.Application/bin/
 obj/
 
 NoteApp.API/.env
+.env
