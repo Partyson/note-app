@@ -23,7 +23,7 @@ services:
       - postgres
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__DefaultConnection: "Host=note_service_db;Database=note_service_db;Username=admin;Password=admin"
+      ConnectionStrings__DefaultConnection: "Host=${DB_HOST};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD};Port=${DB_PORT}"
     ports:
       - "5003:8080"
 
