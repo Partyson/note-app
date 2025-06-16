@@ -29,8 +29,8 @@ services:
 
   ui:
     build:
-      context: ./NoteApp.UI
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: NoteApp.UI/Dockerfile
     container_name: note_service_ui
     depends_on:
       - api
