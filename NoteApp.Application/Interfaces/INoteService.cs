@@ -12,7 +12,7 @@ public interface INoteService
         SortParameter sortedBy, bool descending);
 
     Task<IEnumerable<NoteResponseDto>> GetNotesWithoutFolders(Guid userId);
-    Task<NoteDto> GetNoteById(Guid noteId, Guid userId);
+    Task<NoteDto?> GetNoteById(Guid noteId, Guid userId);
     Task<bool> UpdateNote(UpdateNoteDto updateNoteDto, Guid noteId, Guid userId);
     Task<bool> ChangeFavouriteStatus(Guid noteId, Guid userId);
 }

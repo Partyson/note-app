@@ -25,4 +25,8 @@
       <ProjectReference Include="..\NoteApp.Infrastructure\NoteApp.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ServiceTest\" />
+    </ItemGroup>
+
 </Project>

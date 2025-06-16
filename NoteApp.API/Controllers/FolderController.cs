@@ -22,6 +22,8 @@ public class FolderController(IFolderService folderService) : ControllerBase
     public async Task<IActionResult> GetFolder([FromRoute] Guid folderId)
     {
         var folder = await folderService.GetFolderById(folderId, User.GetUserId());
+        if (folder == null)
+            return NotFound();
         return Ok(folder);
     }
 

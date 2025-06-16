@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NoteApp.Domain.Entities;
 using NoteApp.Domain.Enums;
+using NoteApp.Domain.Extensions;
 using NoteApp.Infrastructure.Data;
 using NoteApp.Infrastructure.Interfaces;
 
@@ -72,11 +73,7 @@ public class NoteRepository : INotesRepository
         if (note == null)
             return false;
         
-        note.Title = updateNote.Title;
-        note.Content = updateNote.Content;
-        note.FolderId = updateNote.FolderId;
-        note.Importance = updateNote.Importance;
-        note.UpdatedAt = DateTime.UtcNow;
+        note.UpdateNoteFields(updateNote);
         await context.SaveChangesAsync();
         return true;
     }

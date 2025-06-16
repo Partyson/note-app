@@ -49,7 +49,7 @@ public class NoteService : INoteService
         return notesResponseDto;
     }
 
-    public async Task<NoteDto> GetNoteById(Guid noteId, Guid userId)
+    public async Task<NoteDto?> GetNoteById(Guid noteId, Guid userId)
     {
         var note = await notesRepository.GetNoteById(noteId, userId);
         var noteDto = note.Adapt<NoteDto>();

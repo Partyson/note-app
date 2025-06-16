@@ -55,6 +55,8 @@ public class NoteController : ControllerBase
     public async Task<IActionResult> GetById([FromRoute] Guid id)
     {
         var note = await noteService.GetNoteById(id, User.GetUserId());
+        if (note == null)
+            return NotFound();
         return Ok(note);
     }
     

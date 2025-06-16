@@ -26,7 +26,7 @@ public class FolderService : IFolderService
         return folderId;
     }
 
-    public async Task<FolderDto> GetFolderById(Guid id, Guid userId)
+    public async Task<FolderDto?> GetFolderById(Guid id, Guid userId)
     {
         var folder = await folderRepository.GetFolderById(id, userId);
         var folderDto = folder.Adapt<FolderDto>();
