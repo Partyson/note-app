@@ -20,4 +20,4 @@ WORKDIR /src/NoteApp.API
 RUN dotnet tool install --global dotnet-ef --version 9.0.*
 ENV PATH="$PATH:/root/.dotnet/tools"
 
-RUN dotnet ef database update --project ../NoteApp.Infrastructure/NoteApp.Infrastructure.csproj --startup-project NoteApp.API/NoteApp.API.csproj --verbose
+RUN dotnet ef database update --project ../NoteApp.Infrastructure/NoteApp.Infrastructure.csproj --startup-project NoteApp.API.csproj --verbose
