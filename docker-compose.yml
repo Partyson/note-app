@@ -1,0 +1,43 @@
+﻿version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: note_service_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: note_service_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./NoteApp.API
+      dockerfile: Dockerfile
+    container_name: note_service_api
+    depends_on:
+      - postgres
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Host=note_service_db;Database=note_service_db;Username=admin;Password=admin"
+    ports:
+      - "5003:8080"
+
+  ui:
+    build:
+      context: ./NoteApp.UI
+      dockerfile: Dockerfile
+    container_name: note_service_ui
+    depends_on:
+      - api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - "5002:8080"
+
+volumes:
+  postgres_data:
